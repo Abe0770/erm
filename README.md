@@ -10,7 +10,7 @@ File handling tool for Linux
     <li>Create files</li>
     <li>Replace file</li>
     <li>Append file</li>
-    <li>Delete file</li>
+    <li>Delete files</li>
     <li>rename file</li>
     <li>merge files</li>
     <li>Get details of a file</li>
@@ -21,17 +21,17 @@ File handling tool for Linux
 <p>Installation of erm requires Super user permissions (sudo)</p>
 
 ## Installing (Debian/Termux):
-'''
+```
 https://github.com/Abe0770/erm.git
 cd erm
 sudo ./install.sh
-'''
+```
 
 # Unstalling
-'''
+```
 cd erm
 sudo ./uninstall.sh
-'''
+```
 
-##Future includes
-<p>Copying and Moving</p>
+## Future includes
+<p><b>Version: 1.10: </b>Copying and Moving files</p>
