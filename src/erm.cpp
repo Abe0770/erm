@@ -153,7 +153,7 @@ int main(int argc, char* argv[]) // argc takes the number of arguements specifie
 	int index;
 	
 	if(argc < 2)
-		cout << "erm: missing file operands \n\"Try \'erm -H\' for more information\" \n";
+		cout << "erm: missing file operands \n\"Try \'erm -H help\' for more information\" \n";
 	else
 	{
 		if((c = getopt(argc, argv, "T:P:B:A:D:R:H:M:W")) != -1)
