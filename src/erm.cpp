@@ -80,22 +80,28 @@ void append_to_file(char f_name[32], char f_app[128])
 
 void rename_file(char f_name[32], char nf_name[32])
 {
-	rename(f_name, nf_name);
+	fstream f;
+	f.open(f_name, ios::in);
+	if(!f)
+		cout << "File " << f_name << " was not found!\n";
+	else
+		rename(f_name, nf_name);
+	f.close();
 }
 
 void help_()
 {
-	cout << "Usage: mf [OPTION]... FILE...\n\nMandaatory flags and arguements\n";
+	cout << "Usage: erm [OPTION]... FILE...\n\nMandaatory flags and arguements\n";
 	cout << "Syntax [FLAG] [FILE/FILES]\n\n";
-	cout << "-T			Create a text file/files\n";
-	cout << "-P			Purge the contents in a file/files\n";
-	cout << "-B			Create a binary file/files\n";
-	cout << "-A			Append text to a file/files\n";
-	cout << "-D			Delete file/files\n";
-	cout << "-R			Rename a file\n";
-	cout << "-H			Help menu\n";
-	cout << "-M			Merge file/files\n";
-	cout << "-D			Display the details of a file\n";
+	cout << "-T	Create a text file/files\n";
+	cout << "-P	Purge the contents in a file/files\n";
+	cout << "-B	Create a binary file/files\n";
+	cout << "-A	Append text to a file/files\n";
+	cout << "-D	Delete file/files\n";
+	cout << "-R	Rename a file\n";
+	cout << "-H	Help menu\n";
+	cout << "-M	Merge file/files\n";
+	cout << "-D	Display the details of a file\n";
 }
 
 void merge_files(char f_name[32], char f1_name[32])
@@ -147,50 +153,54 @@ int main(int argc, char* argv[]) // argc takes the number of arguements specifie
 	int index;
 	
 	if(argc < 2)
-		cout << "mf: missing file operands \nTry \'mf -H\' for more information \n";
+		cout << "erm: missing file operands \n\"Try \'erm -H\' for more information\" \n";
 	else
 	{
-		while((c = getopt(argc, argv, "T:P:B:A:D:R:H:M:W")) != -1)
+		if((c = getopt(argc, argv, "T:P:B:A:D:R:H:M:W")) != -1)
 		{
 			switch(c)
 			{
-				case 'T':
+				case 'T':  							// Create a file
 					for(int i=2; i<argc; i++)
 						create_text_file(argv[i]);
 					break;
-				case 'P':
+				case 'P':							// Delete the contents of a file
 					for(int i=2; i<argc; i++)
 						delete_file_content(argv[i]);
 					break;
-				case 'B':
-					for(int i=2; i<argc; i++)
+				case 'B':							// Create a binary data file
+					for(int i=2; i<argc; i++)				
 						create_binary_file(argv[i]);
 					break;
-				case 'A':
-					for(int i=3; i<argc; i++)
+				case 'A':							// Append to a file
+					for(int i=3; i<argc; i++)				
 						append_to_file(argv[2], argv[i]);
 					break;
-				case 'D':
+				case 'D':							// Delete a file
 					for(int i=2; i<argc; i++)
 						delete_file(argv[i]);
 					break;
-				case 'R':
+				case 'R':							// Rename a file
 					rename_file(argv[2], argv[3]);
 					break;
-				case 'H':
+				case 'H':							// Displays help
 					help_();
 					break;
-				case 'M':
+				case 'M':							// Merge two files 
 					for(int i=3; i<argc; i++)
 						merge_files(argv[2], argv[i]);
 					break;
-				case 'W':
+				case 'W':							// displays the details of a file
 					file_dets(argv[2]);
 					break;
 				default:
-					cout<<"busted";
+					cout<<"Missing arguements!!";
 					abort();
 			}
+		}
+		else
+		{
+			cout << "Missing flags or invalid arguements\n";
 		}
 	}
 	return 0;
