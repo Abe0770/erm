@@ -27,7 +27,7 @@ cd erm
 sudo ./install.sh
 ```
 
-# Unstalling
+# Uninstalling
 ```
 cd erm
 sudo ./uninstall.sh
