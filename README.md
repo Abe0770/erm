@@ -24,6 +24,7 @@ File handling tool for Linux
 ```
 https://github.com/Abe0770/erm.git
 cd erm
+chmod 777 install.sh
 sudo ./install.sh
 ```
 
