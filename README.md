@@ -24,13 +24,14 @@ File handling tool for Linux
 ```
 https://github.com/Abe0770/erm.git
 cd erm
-chmod 777 install.sh
+chmod u+x install.sh
 sudo ./install.sh
 ```
 
 # Uninstalling
 ```
 cd erm
+chmod u+x uninstall.sh
 sudo ./uninstall.sh
 ```
 
