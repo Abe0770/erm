@@ -20,7 +20,7 @@ File handling tool for Linux
 # Installing and requirements
 <p>Installation of erm requires root permissions.</p>
 <p>Required dependencies - git 
-if git is not installed use <br></p>
+if git is not installed use</p>
 ```
 sudo apt-get install git -y
 ```
