@@ -19,7 +19,12 @@ File handling tool for Linux
 
 # Installing and requirements
 <p>Installation of erm requires root permissions.</p>
-<p>Required dependencies - git <br> if git is not installed use <br>```sudo apt-get install git -y```<br>to install git.</p>
+<p>Required dependencies - git 
+if git is not installed use <br></p>
+```
+sudo apt-get install git -y
+```
+to install git.
 
 ## Installing (Debian/Termux):
 ```
