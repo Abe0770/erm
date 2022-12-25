@@ -18,7 +18,7 @@ File handling tool for Linux
 </p>
 
 # Installing and requirements
-<p>Installation of erm requires Super user permissions (sudo)</p>
+<p>Installation of erm requires root permissions.</p>
 
 ## Installing (Debian/Termux):
 ```
