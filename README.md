@@ -1,7 +1,4 @@
 # erm
-File handling tool for Linux
-
-# What is erm?
 <p>Erm file handling tool for linux is a powerfull application that handles tasks like creating, editing, deleting and many more easily and conveniently </p>
 
 ## Features
