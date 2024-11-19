@@ -9,77 +9,64 @@ using namespace std;
 #define optional_argument 2
 
 
-void create_text_file(char f_name[32])
-{
+void create_text_file(char f_name[32]) {
 	fstream f;
 	f.open(f_name, ios::in);
-	if(f)
-	{
+	if(f) {
 		cout << "File " << f_name << " already exists.\n";
 		f.close();
 	}
-	else
-	{
+	else {
 		f.open(f_name, ios::out);
 		f.close();
 	}
 }
 
-void create_binary_file(char f_name[32])
-{
+void create_binary_file(char f_name[32]) {
 	fstream f;
 	f.open(f_name, ios::in);
-	if(f)
-	{
+	if(f) {
 		cout << "File " << f_name << " already exists.\n";
 		f.close();
 	}
-	else
-	{
+	else {
 		f.open(f_name, ios::out | ios::binary);
 		f.close();
 	}
 }
 
-void delete_file_content(char f_name[32])
-{
+void delete_file_content(char f_name[32]) {
 	fstream f;
 	f.open(f_name, ios::in);
-	if(!f)
-	{
+	if(!f) {
 		cout << "File " << f_name << " does not exist.\n";
 		f.close();
 	}
-	else
-	{	f.close();
+	else {	f.close();
 		f.open(f_name, ios::out | ios::trunc);
 		f.close();
 	}
 }
 
-void delete_file(char f_name[32])
-{
+void delete_file(char f_name[32]) {
 	fstream f;
 	f.open(f_name, ios::in);
 	if(!f)
 		cout << "File " << f_name << " was not found!\n";
-	else
-	{
+	else {
 		f.close();
 		remove(f_name);
 	}
 }
 
-void append_to_file(char f_name[32], char f_app[128])
-{
+void append_to_file(char f_name[32], char f_app[128]) {
 	fstream f;
 	f.open(f_name, ios::out | ios::app);
 	f << f_app << ' ';
 	f.close();
 }
 
-void rename_file(char f_name[32], char nf_name[32])
-{
+void rename_file(char f_name[32], char nf_name[32]) {
 	fstream f;
 	f.open(f_name, ios::in);
 	if(!f)
@@ -89,8 +76,7 @@ void rename_file(char f_name[32], char nf_name[32])
 	f.close();
 }
 
-void help_()
-{
+void help_() {
 	cout << "Usage: erm [OPTION]... FILE...\n\nMandaatory flags and arguements\n";
 	cout << "Syntax [FLAG] [FILE/FILES]\n\n";
 	cout << "-T	Create a text file/files\n";
@@ -104,8 +90,7 @@ void help_()
 	cout << "-D	Display the details of a file\n";
 }
 
-void merge_files(char f_name[32], char f1_name[32])
-{
+void merge_files(char f_name[32], char f1_name[32]) {
 	fstream f;
 	char ch[4096];
 	f.open(f_name, ios::out | ios::app);
@@ -113,23 +98,19 @@ void merge_files(char f_name[32], char f1_name[32])
 	f1.open(f1_name, ios::in);
 	f << '\n';
 	while(f1.getline(ch, 4096, '\n'))
-	{
 		f << ch << '\n';
-	}
 	f.close();
 	f1.close();
 }
 
-void file_dets(char f_name[])
-{
+void file_dets(char f_name[]) {
 	char ch[4096];
 	int l=0, word=0, chara=0;
 	fstream f;
 	f.open(f_name, ios::in);
 	if(!f)
 	cout << "Sucker! file " << f_name << " doesn't exist.\n";
-	else
-	{
+	else {
 		while(f.getline(ch, 4096, '\n'))
 			l++;
 		f.close();
@@ -146,20 +127,14 @@ void file_dets(char f_name[])
 	}
 }
 
-int main(int argc, char* argv[]) // argc takes the number of arguements specified, and argv takes the arguements specified
-{
+int main(int argc, char* argv[]) { // argc takes the number of arguements specified, and argv takes the arguements specified
 	int c;
-
 	int index;
-	
 	if(argc < 2)
 		cout << "erm: missing file operands \n\"Try \'erm -H help\' for more information\" \n";
-	else
-	{
-		if((c = getopt(argc, argv, "T:P:B:A:D:R:H:M:W")) != -1)
-		{
-			switch(c)
-			{
+	else {
+		if((c = getopt(argc, argv, "T:P:B:A:D:R:H:M:W")) != -1)	{
+			switch(c) {
 				case 'T':  							// Create a file
 					for(int i=2; i<argc; i++)
 						create_text_file(argv[i]);
@@ -199,9 +174,7 @@ int main(int argc, char* argv[]) // argc takes the number of arguements specifie
 			}
 		}
 		else
-		{
 			cout << "Missing flags or invalid arguements\n";
-		}
 	}
 	return 0;
 }
