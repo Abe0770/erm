@@ -14,6 +14,7 @@ if [ "$EUID" -ne 0 ]
 	if [ -f "$FILE" ]
 	then
 	    printf "Running install script..."
+     	    chmod +x erm
 	    sudo cp erm /usr/local/bin/erm
 	    printf "\nSuccessfully installed erm\n"
 	else
